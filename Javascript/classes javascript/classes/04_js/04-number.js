@@ -49,4 +49,4 @@ function almostEqual(a, b){
 
 almostEqual(almostEqual(0.1 + 0.2, 0.3));
 
-// learn more about shallow copy and deep copy
+// learn more about shallow copy and deep copy and structuredClone()
