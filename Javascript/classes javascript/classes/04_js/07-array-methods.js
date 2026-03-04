@@ -24,7 +24,7 @@ const spicyOrders = orders.filter(o => o.Spicy); // .filter works more as a cond
 
 // value of sum will be 0 or any_intial_value[on the line 27]
 const totalRevenue = orders.reduce((sum, order) => {
-    return sum + (order.qty * order.price)
+    return sum + (order.qty * order.price) // sum holds the value of sum from the next iterations it doesnt get reset
 }, 0);
 
 console.log(totalRevenue); // 107
