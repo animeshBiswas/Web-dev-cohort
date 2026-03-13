@@ -81,6 +81,7 @@ generalStore = null;
 console.log(generalStore);
 // To destroy a variable so its preferred to use null than undefined
 // And research about actually happens behind the scene and learn about it more
+// Also learn about how null and undefined works in the memory
 
 
 // Research about Arrays and objects methods which is easy to understand
