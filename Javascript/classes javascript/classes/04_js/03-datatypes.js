@@ -81,7 +81,11 @@ const armorOriginal = {
     },
 };
 
-const armorCopy = {...armorOriginal} // if you use spread operator then you will get copy of the main object but you cant able to make changes, additions in the nested object but their is alternative for that i.e.structuredClone() 
+const armorCopy = {...armorOriginal} 
+// Spread operator creates a shallow copy.
+// Top-level properties are copied,
+// but nested objects still share the same reference.
+// To create a deep copy, use structuredClone().
 armorCopy.buff.fire = 90
 
 const potionOriginal = {name: "Health", effects: {heal: 40, mana:30}}
