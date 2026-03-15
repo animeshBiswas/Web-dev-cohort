@@ -90,8 +90,11 @@ armorCopy.buff.fire = 90
 
 const potionOriginal = {name: "Health", effects: {heal: 40, mana:30}}
 const potionCopy = structuredClone(potionOriginal)
-// shallow copy means copy in surface level i.e. you cant do in nested
-// deep copy means copy in deep level i.e. you can do in nested too
+// Shallow copy → only top-level properties are copied.
+// Nested objects still share the same reference.
+
+// Deep copy → nested objects are also duplicated,
+// so modifying them does not affect the original object.
 
 typeof null === "object" // object and this is legacy bug
 
