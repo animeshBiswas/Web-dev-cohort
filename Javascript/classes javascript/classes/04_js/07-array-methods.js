@@ -19,15 +19,26 @@ const receiptLines =  orders.map(o => `${o.dish}: $${o.price * o.qty}`)
 const spicyOrders = orders.filter(o => o.Spicy); // .filter works more as a conditions than method
 // console.log(spicyOrders); // returns arrays of object
 
+// ------------------------------------------------------------------------------------
+// Reduce method
+
 // Commonly use case of reduce in example or in-productions to do total calculations and reduce is used in shopping cart or add-to-cart
 // as compared to others methods reduce let you decide what you want in return
 
 // value of sum will be 0 or any_intial_value[on the line 27]
 const totalRevenue = orders.reduce((sum, order) => {
-    return sum + (order.qty * order.price) // sum holds the value of sum from the next iterations it doesnt get reset
+    return sum + (order.qty * order.price) // sum holds the value of sum from the past iterations for the next iterations it doesnt get reset
 }, 0);
 
 console.log(totalRevenue); // 107
+
+// const acc = {spicy: [], mild:[]} // you can write acc this way too
+// const grouped = orders.reduce((acc, order) => {
+//     const category = order.Spicy ? "spicy": "mild";
+
+//     acc[category].push(order.dish)
+//     return acc
+// }, acc);
 
 const grouped = orders.reduce((acc, order) => {
     const category = order.Spicy ? "spicy": "mild";
@@ -62,6 +73,6 @@ const mildReport = kitchenOrders
         dish: order.dish,
         total: order.price * order.qty
     }))
-    .toSorted()
+    .toSorted();   // .toSorted() => .sort((a, b) => a - b);
 
 console.log(mildReport);
