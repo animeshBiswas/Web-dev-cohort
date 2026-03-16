@@ -13,7 +13,7 @@ const hero = {
 
 hero.weapon = "Fire"
 
-delete hero.level
+delete hero.level // if you want to delete property inside the object then use "delete hero.level"
 
 const ranger = {
     name: "Lakshya the swift",
