@@ -1,7 +1,7 @@
-console.log("Healing Herbs", 3);
+console.log(brewPotion("Healing Herbs", 3));
 
 function brewPotion(ingredient, dose){
-    return `Brewing potion with ${ingredient} (x${dose})... Potion ready`
+    return `Brewing potion with ${ingredient} (x${dose})... Potion ready`;
 }
 
 // function expression
@@ -79,7 +79,9 @@ const potionShop = (function () {
     return {
         brew() {
             inventory++
-            return `Brew potion`
-        }
-    }
-  })()
+            return `Brew potion #${inventory}`;
+        },
+        getStock(){
+            return inventory;
+    },
+  })();
