@@ -83,5 +83,23 @@ const potionShop = (function () {
         },
         getStock(){
             return inventory;
-    },
+    };
   })();
+console.log(potionShop);
+console.log(potionShop.brew());
+console.log(potionShop.inventory);
+
+// closures
+// Learn more about closures like why, how and what
+function makefunc(){
+    const name = "Mozilla";
+    function displayName() {
+        console.log(name);
+    }
+    return displayName;
+}
+
+const myFunc = makeFunc();
+myFunc();
+
+// learn about this, call , bind etc
