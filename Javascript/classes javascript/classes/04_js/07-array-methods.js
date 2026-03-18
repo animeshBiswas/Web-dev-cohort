@@ -15,6 +15,13 @@ const myData = orders.forEach((order, index) => {
  
 const receiptLines =  orders.map(o => `${o.dish}: $${o.price * o.qty}`)
 // console.log(receiptLines); // returns a array
+// [
+//   'Pasta Carbonara: $28',
+//   'Dragon Ramen: $12',
+//   'Casear Salad: $27',
+//   'Inferno wings: $22',
+//   'Truffle Risotto: $18'
+// ]
 
 const spicyOrders = orders.filter(o => o.Spicy); // .filter works more as a conditions than method
 // console.log(spicyOrders); // returns arrays of object
