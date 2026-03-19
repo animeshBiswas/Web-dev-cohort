@@ -1,108 +1,252 @@
 const artifact = {
-    name: "Obsidian Crown",
-    era: "Ancient",
-    value: 50000,
-    material: "volvanic glass",
+  name: "Obsidian Crown",
+  era: "Ancient",
+  value: 50000,
+  material: "volcanic glass",
 };
 
-const keys = Object.keys(artifact)
-const Values = Object.values(artifact)
-const entries = Object.entries(artifact)
 
-// console.log(keys);
-// [ 'name', 'era', 'value', 'material' ]
-// console.log(Values);
-// [ 'Obsidian Crown', 'Ancient', 50000, 'volvanic glass' ]
-// console.log(entries);
-/* 
+// ==============================
+// 🔹 OBJECT METHODS
+// ==============================
+
+// Object.keys() → returns array of keys
+
+const keys = Object.keys(artifact);
+
+console.log(keys);
+// ['name', 'era', 'value', 'material']
+
+
+// Object.values() → returns array of values
+
+const values = Object.values(artifact);
+
+console.log(values);
+// ['Obsidian Crown', 'Ancient', 50000, 'volcanic glass']
+
+
+// Object.entries() → returns array of [key, value] pairs
+
+const entries = Object.entries(artifact);
+
+console.log(entries);
+/*
 [
-  [ 'name', 'Obsidian Crown' ],
-  [ 'era', 'Ancient' ],
-  [ 'value', 50000 ],
-  [ 'material', 'volvanic glass' ]
+  ['name', 'Obsidian Crown'],
+  ['era', 'Ancient'],
+  ['value', 50000],
+  ['material', 'volcanic glass']
 ]
-so the o/p is array of array and is also knows  as entries
 */
+
+// Each item is a [key, value] pair
+// Also called "entries" (array of arrays)
+
+
+// ------------------------------
+// 🔹 LOOPING USING entries()
+// ------------------------------
+
+// Destructuring [key, value] while looping
 
 for (const [key, value] of Object.entries(artifact)) {
-    console.log(` ${key}: ${value} `);
+  console.log(`${key}: ${value}`);
 }
+
 /*
-O/P :-
- name: Obsidian Crown 
- era: Ancient 
- value: 50000 
- material: volvanic glass 
+name: Obsidian Crown
+era: Ancient
+value: 50000
+material: volcanic glass
 */
 
+
+// ==============================
+// 🔹 Object.fromEntries()
+// ==============================
+
+// Converts array of [key, value] pairs into an object
+
 const priceList = [
-    ["Obsidian Crown", 50000],
-    ["Ruby Pendant", 30000],
-    ["Iron Shield", 5000],
+  ["Obsidian Crown", 50000],
+  ["Ruby Pendant", 30000],
+  ["Iron Shield", 5000],
 ];
 
-const priceObject = Object.fromEntries(priceList)
+const priceObject = Object.fromEntries(priceList);
+
+console.log(priceObject);
+// {
+//   "Obsidian Crown": 50000,
+//   "Ruby Pendant": 30000,
+//   "Iron Shield": 5000
+// }
+
+
+// ==============================
+// 🔹 Object.freeze()
+// ==============================
+
+// freeze() makes object immutable (shallow)
+
+// - cannot add new properties
+// - cannot delete properties
+// - cannot modify existing values
 
 const displayCase = {
-    artifact: "Obsidian",
-    location: "Hall A, Case 3",
-    locked: true,
+  artifact: "Obsidian",
+  location: "Hall A, Case 3",
+  locked: true,
 };
 
-Object.freeze(displayCase); // It used to lock the object to not to add or change the property anymore
-delete displayCase.locked; // after its freeze it dont delete the property due to locking the object
-displayCase.newProp = "test"; // after its freeze it dont add the property due to locking the object
-// console.log(displayCase);
+Object.freeze(displayCase);
 
+
+// Attempts to modify after freeze:
+
+delete displayCase.locked; 
+// ❌ fails (no deletion)
+
+displayCase.newProp = "test"; 
+// ❌ fails (no addition)
+
+displayCase.locked = false; 
+// ❌ fails (no modification)
+
+console.log(displayCase);
+// remains unchanged
+
+
+// ------------------------------
+// 🔹 IMPORTANT NOTE
+// ------------------------------
+
+// freeze() is SHALLOW
+
+const obj = {
+  nested: { value: 1 }
+};
+
+Object.freeze(obj);
+
+obj.nested.value = 2;
+// ✅ allowed (nested object is NOT frozen)
+
+
+// ------------------------------
+// 🎯 ONE-LINER
+// ------------------------------
+
+// Object.keys/values/entries → extract data from objects
+// Object.fromEntries → build object from key-value pairs
+// Object.freeze → prevents modification (shallow)
 
 const catalogEntry = {
-    id: "ART-001",
-    description: "Ancient Crows",
-    verified: true 
+  id: "ART-001",
+  description: "Ancient Crows",
+  verified: true 
 };
+
+
+// ==============================
+// 🔹 Object.seal()
+// ==============================
+
+// seal() locks the structure of the object
 
 Object.seal(catalogEntry);
 
-/*  Interview Questions :-
-What is the difference between Object.freeze() and Object.seal()
-Only difference is that seal is used when you allow to edit  existing property but you cant do the structural changes like add or delete
-*/
+// After sealing:
+// - ❌ cannot add new properties
+// - ❌ cannot delete properties
+// - ✅ can modify existing properties (if writable)
 
-// Intervirw related questions asked to this topic 
-const secureArtificats = { name: "Ruby Pendant" }
 
-Object.defineProperty(secureArtificats, "catelogId", {
-    value: "SEC-999",
-    writable: false,
-    enumerable: false, // it used to allow to do loop or not 
-    configurable: false,
+// ------------------------------
+// 🔥 INTERVIEW DIFFERENCE
+// ------------------------------
 
-}) // customizing the propery with help of writable, enumerable, configurable its does what is allow or not.
-// defineProperty is used to add property on the object by giving the object name and key-name and we have also know and seen that we can loop the object but thats not how its works each object is not loopable 
+// Object.freeze()
+// - ❌ cannot add
+// - ❌ cannot delete
+// - ❌ cannot modify
 
-console.log(secureArtificats.catelogId); // SEC-999
-secureArtificats.catelogId = "HACKED";
-console.log(secureArtificats.catelogId); // SEC-999
+// Object.seal()
+// - ❌ cannot add
+// - ❌ cannot delete
+// - ✅ can modify existing properties
 
-// for (const [key, value] of Object.entries(secureArtificats)) {
-//     console.log(`${key}: ${value}`);
-// }
+// ✔ One-liner:
+// freeze = fully immutable
+// seal   = structure locked, values editable
+
+
+// ==============================
+// 🔹 Object.defineProperty()
+// ==============================
+
+const secureArtifacts = { name: "Ruby Pendant" };
+
+// defineProperty() is used to define or customize a property
+// with specific rules (descriptors)
+
+Object.defineProperty(secureArtifacts, "catalogId", {
+  value: "SEC-999",
+  writable: false,     // cannot change value
+  enumerable: false,   // will not appear in loops
+  configurable: false  // cannot delete or reconfigure
+});
+
+
+// ------------------------------
+// 🔹 PROPERTY BEHAVIOR
+// ------------------------------
+
+console.log(secureArtifacts.catalogId);
+// "SEC-999"
+
+secureArtifacts.catalogId = "HACKED";
+
+console.log(secureArtifacts.catalogId);
+// still "SEC-999" (because writable: false)
+
+
+// ------------------------------
+// 🔹 ENUMERABLE BEHAVIOR
+// ------------------------------
+
+// enumerable: false → hidden from loops
+
+for (const [key, value] of Object.entries(secureArtifacts)) {
+  console.log(`${key}: ${value}`);
+}
+
 /*
 name: Ruby Pendant
-catelogId: SEC-999
 */
 
-// if enumerable: false
-for (const [key, value] of Object.entries(secureArtificats)) {
-    console.log(`${key}: ${value}`);
-}
-/*  
-name: Ruby Pendant
-*/
+// catalogId is NOT shown because enumerable is false
 
-const desc = Object.getOwnPropertyDescriptor(secureArtificats, "catelogId")
+
+// ------------------------------
+// 🔹 IMPORTANT CLARIFICATION
+// ------------------------------
+
+// Objects are NOT directly iterable
+// But we can use Object.entries(), Object.keys(), etc.
+
+
+// ==============================
+// 🔹 PROPERTY DESCRIPTORS
+// ==============================
+
+// getOwnPropertyDescriptor() shows property settings
+
+const desc = Object.getOwnPropertyDescriptor(secureArtifacts, "catalogId");
+
 console.log(desc);
-/* It gives list of property of the mentioned key of the object
+/*
 {
   value: 'SEC-999',
   writable: false,
@@ -110,9 +254,12 @@ console.log(desc);
   configurable: false
 }
 */
-const desc1 = Object.getOwnPropertyDescriptor(secureArtificats, "name")
+
+
+const desc1 = Object.getOwnPropertyDescriptor(secureArtifacts, "name");
+
 console.log(desc1);
-/* It gives list of property of the mentioned key of the object
+/*
 {
   value: 'Ruby Pendant',
   writable: true,
@@ -120,6 +267,25 @@ console.log(desc1);
   configurable: true
 }
 */
+
+
+// ------------------------------
+// 🔹 DEFAULT BEHAVIOR
+// ------------------------------
+
+// Normal object properties have:
+// writable: true
+// enumerable: true
+// configurable: true
+
+
+// ------------------------------
+// 🎯 ONE-LINER
+// ------------------------------
+
+// defineProperty() lets you control how a property behaves (editable, visible, deletable).
+
+
 
 // loop key points
 //
