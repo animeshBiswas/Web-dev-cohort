@@ -1,28 +1,177 @@
 const hero = {
-    name: "Luna the Brave",
-    class: "Mage",
-    level: 12,
-    health: 85,
-    mana: 120,
-    isAlive: true,
+  name: "Luna the Brave",
+  class: "Mage",
+  level: 12,
+  health: 85,
+  mana: 120,
+  isAlive: true,
 };
 
-// There are two types to access values inside a objects :-
-// 1. hero. or hero[dot] (just for understanding) to access any properties, when you know 100% that this is the only values is not coming from a API or dynamically then use hero[dot] when you hardcode the values
-// 2. hero[] :- its coming from response, accumulator or you're processing from the data then use hero[]
 
-hero.weapon = "Fire"
+// ==============================
+// 🔹 ACCESSING OBJECT PROPERTIES
+// ==============================
 
-delete hero.level
+// There are two main ways to access values inside an object:
+
+
+// 1️⃣ Dot notation (.)
+
+// Used when you KNOW the exact property name (hardcoded)
+// Most common and clean way
+
+hero.name; 
+// "Luna the Brave"
+
+
+// 2️⃣ Bracket notation ([])
+
+// Used when property name is dynamic (comes from variable, API, loop, etc.)
+
+const key = "health";
+
+hero[key]; 
+// 85
+
+
+// ------------------------------
+// 🔹 IMPORTANT DIFFERENCE
+// ------------------------------
+
+// Dot notation:
+// - fixed property name
+// - cannot use variables directly
+
+hero.key; 
+// ❌ looks for "key", not value of variable
+
+
+// Bracket notation:
+// - supports dynamic keys
+
+hero[key]; 
+// ✅ correct
+
+
+// ------------------------------
+// 🔹 ADDING / UPDATING PROPERTIES
+// ------------------------------
+
+// Add new property
+hero.weapon = "Fire";
+
+// Update existing property
+hero.level = 13;
+
+
+// ------------------------------
+// 🔹 DELETING PROPERTIES
+// ------------------------------
+
+// delete removes a property from object
+
+delete hero.level;
+
+
+// ------------------------------
+// 🔹 IMPORTANT POINTS
+// ------------------------------
+
+// Objects are mutable → you can add, update, delete properties
+
+// Dot vs Bracket:
+// dot → when property name is known
+// []  → when property name is dynamic
+
+
+// ------------------------------
+// 🎯 ONE-LINER
+// ------------------------------
+
+// Use dot notation for known properties and bracket notation for dynamic keys.
+
+//---------------------------------------------------------------------------------------------------
 
 const ranger = {
-    name: "Lakshya the swift",
-    agility: 80,
-    stealth: undefined
+  name: "Lakshya the swift",
+  agility: 80,
+  stealth: undefined
 };
 
+
+// ==============================
+// 🔹 "in" OPERATOR
+// ==============================
+
+// Checks if a property exists in the object
+// Includes BOTH:
+// - own properties
+// - inherited properties (via prototype chain)
+
 console.log("name" in ranger);
+// true (own property)
+
 console.log("stealth" in ranger);
-console.log("toString" in ranger); // o/p is true and the reasons behind is the prototype chaining and when you write the objects in the above is also comes from the further objects also know nested objects and "ranger" inherits other properties too and thats why "toString" key is true
-// to check without any issues then use the .hasOwnProprty() to get reliable answers
+// true (property exists even if value is undefined)
+
+
+// ------------------------------
+// 🔹 PROTOTYPE CHAIN
+// ------------------------------
+
+// All objects inherit from Object.prototype
+
+// So built-in methods like "toString" are available
+
+console.log("toString" in ranger);
+// true
+
+// Reason:
+// "toString" is not inside ranger directly,
+// but it exists in its prototype (Object.prototype)
+
+
+// ------------------------------
+// 🔹 hasOwnProperty()
+// ------------------------------
+
+// Checks ONLY own properties (not inherited ones)
+
 console.log(ranger.hasOwnProperty("toString"));
+// false
+
+console.log(ranger.hasOwnProperty("name"));
+// true
+
+
+// ------------------------------
+// 🔹 IMPORTANT DIFFERENCE
+// ------------------------------
+
+// "in" operator:
+// - checks own + inherited properties
+
+// hasOwnProperty():
+// - checks only own properties
+
+
+// ------------------------------
+// 🔹 IMPORTANT CLARIFICATION
+// ------------------------------
+
+// Your statement:
+// "nested objects"
+
+// ❌ Not correct here
+
+// ✔ Correct concept:
+// Prototype chain (inheritance), not nested objects
+
+
+// ------------------------------
+// 🎯 ONE-LINER
+// ------------------------------
+
+// "in" checks property existence including prototype chain,
+// while hasOwnProperty() checks only object's own properties.
+

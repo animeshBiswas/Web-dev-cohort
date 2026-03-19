@@ -81,13 +81,20 @@ const armorOriginal = {
     },
 };
 
-const armorCopy = {...armorOriginal} // if you use spread operator then you will get copy of the main object but you cant able to make changes, additions in the nested object but their is alternative for that i.e.structuredClone() 
+const armorCopy = {...armorOriginal} 
+// Spread operator creates a shallow copy.
+// Top-level properties are copied,
+// but nested objects still share the same reference.
+// To create a deep copy, use structuredClone().
 armorCopy.buff.fire = 90
 
 const potionOriginal = {name: "Health", effects: {heal: 40, mana:30}}
 const potionCopy = structuredClone(potionOriginal)
-// shallow copy means copy in surface level i.e. you cant do in nested
-// deep copy means copy in deep level i.e. you can do in nested too
+// Shallow copy → only top-level properties are copied.
+// Nested objects still share the same reference.
+
+// Deep copy → nested objects are also duplicated,
+// so modifying them does not affect the original object.
 
 typeof null === "object" // object and this is legacy bug
 
