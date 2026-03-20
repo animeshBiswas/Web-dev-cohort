@@ -45,7 +45,7 @@ console.log("bind: ", reportDelivery.bind(deliveryBoy, "Mars", "Ordered"));
 // const bindReport = reportDelivery.bind(deliveryBoy, "Haridwar", "What")
 // console.log(bindReport());
 
-// OR
+// OR [Above is better]
 
 // 1)
 // const bindReport = reportDelivery.bind(deliveryBoy, "Haridwar")
@@ -59,7 +59,7 @@ console.log(bindReport("Haridwar","What"));
 // Ranveer at Haridwar: What
 
 //what is purpose of using bind where we can use call and apply easily
-// reasons behind is that someplaces you dont want to run immeditaely as compared to call and apply which runs instantly and in bind has a reference of the functions which is up to you when you wants to run and specially when you onclick 
+// reasons behind is that someplaces you dont want to run immeditaely as compared to call and apply which runs instantly and in bind has a reference of the functions which is up to you when you wants to run and specially when you onclick on the some events you wants the reference of the fuctions so that it can execute
 
 // Main purpose or goal of call, bind, apply is to change the reference of "this" keyword
 // When you go to the DOM when you click the button you have to change references of the button. so you want to change the references of "this"
