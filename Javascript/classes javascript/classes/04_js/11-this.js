@@ -162,7 +162,22 @@ filmSet.prepareProps()
 // meaning of detached methods is that you created a method (bow()) inside a object (actor) but you did a detached (detachedBow) means is that you remove the function of bow from the actor object and placed the referece of the actor.bow in the somewhere else i.e. detachedBow and in the end you'll have 2 things i.e. you can run actor.bow() and also detachedBow where holds the reference of actor.bow() and differen will be that one object is running the methods and the other reference of bow() is stored in somewhere else is detachedBow() where you can run too.
 // such type of questions is asked in the interview
 // is also kind of similar to closures too
-// 
+// closures example below
+/*
+function makeFunc() {
+    const name = "Mozilla";
+    function displayName(){
+        console.log(name);
+    }
+    return displayName;
+}
+
+const myFunc = makeFunc();
+myFunc();
+
+// myFunc hold the reference of makeFunc() and its also returns the displayName i.e. whole func with the access of "name" [tippin box analogy] so people usually assumes that its will happen same in the detached method too but it doesnt happens and thats the differences and this is how you relate
+
+*/
 
 const actor = {
     name: "Ranveer",
