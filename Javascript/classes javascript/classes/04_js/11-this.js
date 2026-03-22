@@ -20,10 +20,11 @@
 // Code:-
 
 // console.log(this);
-// {} => now its pointing to the node global object
+// {} => now its pointing to the node global object or you can that is pointing to global executions context
 
 function ranveerOnGlobalStage() {
     return typeof this;
+    // this is pointing to the functional executions context because its inheriting something from the object so you'll see a variations in o/p from console.log(this) and the function this
 }
 
 // console.log(ranveerOnGlobalStage());
