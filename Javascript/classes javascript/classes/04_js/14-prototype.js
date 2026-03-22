@@ -98,3 +98,11 @@ console.log([1,2,3].animesh);
 
 // Create your own map, forEach, reduce using polyfill
 // In almost every Javascript Interview they asked you create your Own map, forEach, reduce etc but mainly they ask this 3 questions surely
+
+// Assignment => Jitne bhi arrays ke functions hai ussko polyfills mein likhna hai i.e. forEach, Reduce, map, and flat [it uses recursions] and array to string or vice-versa 
+
+/*
+Fact :- Javascript mein koi classes hota nhi hai woh wrapper hai, mainly prototype hota hai  
+classes syntaxtical sugar hota hai 
+
+*/
