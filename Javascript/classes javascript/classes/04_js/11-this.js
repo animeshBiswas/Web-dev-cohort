@@ -72,7 +72,6 @@ const bollywoodFilm = {
 
 
 
-
 // Interview Questions
 
 const filmDirector = {
