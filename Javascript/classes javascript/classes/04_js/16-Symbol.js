@@ -44,35 +44,57 @@ console.log(Object.keys(citizenRecord));
 console.log(Object.getOwnPropertySymbols(citizenRecord));
 // [ Symbol(biometricHash), Symbol(bloodGroup) ]
 
-const rtiQueryBook = {
-    queries: ['Infra budget', 'Ration Card', 'Education budget', 'startup laws'],
-}
 
-for(const query of rtiQueryBook){
-    console.log(`Filing RTI: ${query}`);
-    [Symbol.iterator](){
-        let index = 0;
-        const queries = this.queries
-        return {
-            next() {
-                if (index < queries.length) {
-                    return `Hello`;
-                }
-                return 'nope'
-            }
-        } 
-    } 
-    
-}
+
+// const rtiQueryBook = {
+//     queries: ['Infra budget', 'Ration Card', 'Education budget', 'startup laws'],
+// }
+// for(const query of rtiQueryBook){
+//     console.log(`Filing RTI: ${query}`);
+// }
 /*
 O/P :-
 TypeError: rtiQueryBook is not iterable
 you cant do loop directly due to arrays inside a object And cant do loops in objects
 to make it iterable you have make some twirk in JS
 */
-/* Use-case 
+
+const rtiQueryBook = {
+    queries: ['Infra budget', 'Ration Card', 'Education budget', 'startup laws'],
+    [Symbol.iterator]() {
+        let index = 0;
+        const queries = this.queries;
+        return {
+            next() {
+                if (index < queries.length) {
+                    return {value: queries[index++], done: false};
+                }
+                return {value: undefined, done: true};
+            },
+        }; 
+    },   
+};
+
+for(const query of rtiQueryBook){
+    console.log(`Filing RTI: ${query}`);
+}
+
+// o/p :-
+// Filing RTI: Infra budget
+// Filing RTI: Ration Card
+// Filing RTI: Education budget
+// Filing RTI: startup laws
 
 
+const governmentScheme = {
+    name: "PM Kisan Yojna",
+    people: 54,
+    [Symbol.toPrimitive](hint){
+        if (hint === "string") return this.name;
+    },
+};
 
-
-*/
+console.log(+governmentScheme);
+// NaN
+console.log(`${governmentScheme}`);
+// PM Kisan Yojna
