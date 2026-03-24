@@ -140,6 +140,8 @@ const filmDirector = {
 
 // filmDirector.announceCast();
 
+
+
 // Interview Questions
 
 /*
@@ -259,4 +261,97 @@ console.log(detachedBow());
 5) how "this" behaves differently in normal function and arrow function?
 5) how "this" works in object method?
 6) What are quirks of "this" in JavaScript?
+*/
+
+/*
+Notes :-
+
+
+// "this" keyword in JavaScript
+
+// Explanation:
+// Think of Ranveer Singh.
+// He is one person, but in different movies he plays different roles.
+// In one movie he is Bajirao, in another he is Alauddin Khilji.
+
+// So the person is the same, but the identity changes based on context.
+
+// This is exactly how "this" works in JavaScript.
+// "this" is not fixed — it depends on HOW a function is called.
+
+// ------------------------------------------------------------
+
+// Case 1: Global level
+
+// console.log(this);
+
+// In Node.js → {}
+// (because top-level "this" points to module.exports)
+
+// In Browser → window object
+
+// ------------------------------------------------------------
+
+// Case 2: Inside a normal function (non-strict mode)
+
+function ranveerOnGlobalStage() {
+    return this;
+}
+
+// console.log(ranveerOnGlobalStage());
+
+// In Node.js → global object
+// In Browser → window object
+
+// Why?
+
+// Let’s think:
+// Who is calling this function?
+
+// ranveerOnGlobalStage();
+
+// There is no object before it.
+// So JavaScript defaults "this" to the global object (in non-strict mode).
+
+// ------------------------------------------------------------
+
+// Case 3: Strict mode
+
+function ranveerWithNoScript() {
+    "use strict";
+    return this;
+}
+
+// console.log(ranveerWithNoScript());
+
+// Output → undefined
+
+// Why?
+
+// In strict mode, JavaScript does NOT assume a default global object.
+// So if no one calls the function explicitly, "this" becomes undefined.
+
+// ------------------------------------------------------------
+
+// Final understanding:
+
+// "this" does NOT depend on:
+// ❌ where the function is written
+
+// "this" ONLY depends on:
+// ✅ how the function is called
+
+// That’s the most important rule.
+
+Final Mental Model (Very Important)
+
+Let’s compress everything into one question you should always ask:
+
+❓ “Who is calling this function?”
+obj.method() → this = obj
+function() → this = global / undefined (strict)
+new Function() → this = new object [new keyword is needed]
+
+
+
 */
