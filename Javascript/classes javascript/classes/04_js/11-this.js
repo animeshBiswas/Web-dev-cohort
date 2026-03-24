@@ -1,14 +1,58 @@
-// Javascript is very similar to C++, Java, python interms of syntax
-// and its very common in programming languages
-// what are similar? loops almost same but there are some differences
-// just like functions, conditions
-// but there is a difference in objects
-// what things which makes javascipt a javascript and also helps to crack the interview (DOM is not a topic instead its a speciality which also not a part of core programminf)
-// this, => its doesnt exists anywhere the level "this" holds in javascript other than anyother programming languages and one the what makes javascript a javascript and also create tricky.
-// call, bind, apply => this make and break interview
-// new => another make and break
-// prototype => if you understand "prototype" thats it, its very important topics in JS
-// this where polyfills comes from.
+// JavaScript feels quite similar to languages like C++, Java, and Python in terms of basic syntax.
+// Many core concepts are shared across these languages.
+
+// For example:
+// Loops are almost the same (for, while, etc.)
+// Functions and conditionals also follow a familiar pattern.
+
+// So if you already know one language, picking up JavaScript becomes easier.
+
+// But... where does JavaScript start becoming different?
+
+// The biggest difference comes when we talk about objects and how JavaScript handles them.
+// This is where things get interesting (and sometimes confusing).
+
+// Now the real question:
+// What actually makes JavaScript "JavaScript"?
+// And what are those concepts that are important not just for understanding,
+// but also for cracking interviews?
+
+// First — DOM:
+// DOM is not really a core JavaScript concept.
+// It's more like a browser feature that JavaScript can interact with.
+// So think of it as a specialty, not the core language itself.
+
+// Now comes the real game changers:
+
+// 1. "this"
+// The way "this" works in JavaScript is very unique.
+// It behaves differently depending on how a function is called.
+// This level of flexibility (and confusion 😅) is not commonly seen in other languages.
+// That’s why "this" is both powerful and tricky.
+
+// 2. call, apply, bind
+// These are directly connected to "this".
+// They let you control what "this" should refer to.
+// In interviews, this is a make-or-break topic.
+
+// 3. new keyword
+// The "new" keyword changes how functions behave.
+// It helps create objects and sets up "this" in a specific way.
+// Another important concept for interviews.
+
+// 4. prototype
+// If you truly understand prototypes, you understand JavaScript at a deeper level.
+// It’s the backbone of how inheritance works in JS.
+// One of the most important topics.
+
+// 5. Polyfills
+// Ever wondered how features are recreated manually?
+// That’s where polyfills come in.
+// And they heavily rely on understanding things like prototypes and "this".
+
+// In short:
+// Syntax is easy.
+// But mastering "this", prototypes, and function behavior is what really defines JavaScript.
 
 
 // this topic
@@ -29,6 +73,7 @@ function ranveerOnGlobalStage() {
 
 // console.log(ranveerOnGlobalStage());
 // object
+
 
 
 // this extact code asked in the interview  
@@ -196,4 +241,22 @@ console.log(detachedBow());
 // whatever roles "this" inherit they become like that
 
 // you have to know the  current state of the "this" global
+
 // there are 2 important things one of them in the detached mode is that what "this" keyword take with them this should be clear
+// Another thing is that when you run the program you have to observe from what environment your running this either node environment or browser environment and it will give o/p according to that
+// Another nested fuctions doesnt inherit "this" and that's why its showing undefined
+// these are behaviours of "this" keyword in JS and you have to accept such behaviour of the js you cant simply just ask why?
+
+
+// --------------------------------------------------------------------------------------
+
+// Learning "this" from the chatgpt
+/*
+1) What is "this" in JavaScript?
+2) What is need of "this" in JavaScript?
+3) how "this" works in nornal function?
+4) how "this" works in arrow function?
+5) how "this" behaves differently in normal function and arrow function?
+5) how "this" works in object method?
+6) What are quirks of "this" in JavaScript?
+*/
