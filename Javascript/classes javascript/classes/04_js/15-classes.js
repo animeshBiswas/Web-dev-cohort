@@ -1,4 +1,4 @@
-class Cricketer {
+class Cricketer { //classes hoti kya hai? classes ke upar synthetical sugar
     constructor(name, role){    // <= this context is being shared
         this.name = name;
         this.role = role;
