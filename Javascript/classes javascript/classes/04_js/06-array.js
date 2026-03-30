@@ -362,7 +362,7 @@ arr2.indexOf(10);  // 1
 // 5. includes() is cleaner than indexOf for existence check
 
 
--------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------
 
 console.log(typeof []);
 // to check a given array is array or not then use .isArray() not typeof becuase it will give you object
@@ -370,7 +370,7 @@ console.log(Array.isArray([])); // true
 console.log(Array.isArray("Ravi")); // false
 // if you dug deeper Strings are array-like (iterable), but NOT actual arrays meaning is different its for thr knowledge but in conditional checks its very different, knowledge and wisdom should be their on there own places like for knowledge tomato is a fruit but wisdom is that dont put in the fruit salad just like for strings dont put knowledge in wisdom
 
-------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------
 // ==============================
 // SHALLOW COPY vs DEEP COPY
 // ==============================
