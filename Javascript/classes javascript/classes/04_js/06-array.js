@@ -65,10 +65,10 @@ Array.of(1, 2, 3)
 // Empty slots vs undefined
 const arr = Array(3)
 
-console.log(arr[0]); 
+console.log(arr[0]); // // “What value is stored at index 0?”
 // undefined (but slot actually empty)
 
-console.log(0 in arr); 
+console.log(0 in arr); // “Does index 0 actually exist inside this array?”
 // false (means slot does not exist)
 
 
